@@ -44,7 +44,7 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
 
     //创建三级菜单
     JMenuItem restartItem = new JMenuItem("Restart");
-    JMenuItem logoutItem = new JMenuItem("Logout");
+    JMenuItem exitItem = new JMenuItem("Exit");
     JMenuItem changeCharaItem = new JMenuItem("Characters");
     JMenuItem changeMemeItem = new JMenuItem("Meme");
 
@@ -185,6 +185,7 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
 
         //菜单绑定事件
         restartItem.addActionListener(this);
+        exitItem.addActionListener(this);
         officialItem.addActionListener(this);
         doujinItem.addActionListener(this);
 
@@ -200,7 +201,7 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
 
         functionJMenu.add(changeItem);
         functionJMenu.add(restartItem);
-        functionJMenu.add(restartItem);
+        functionJMenu.add(exitItem);
 
         aboutJMenu.add(officialItem);
         aboutJMenu.add(doujinItem);
@@ -447,6 +448,22 @@ public class GameFrame extends JFrame implements KeyListener, ActionListener {
             count = 0;
             initIndex();
             initImg();
+        } else if (exitItem == obj) {
+            System.exit(0);
+        } else if (officialItem == obj) {
+            String website = "cmd /c start https://www.devilmaycry5.com/us/";
+            try {
+                Runtime.getRuntime().exec(website);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        } else if (doujinItem == obj) {
+            String website = "cmd /c start http://htmlpreview.github.io/?https://github.com/GardenKitten/devil-may-cry/blob/main/dmc/html/title.html";
+            try {
+                Runtime.getRuntime().exec(website);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
 
     }
